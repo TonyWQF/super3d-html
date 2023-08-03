@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
+  <title>SUPER-3D</title>
+  <link rel="stylesheet" href="./style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+</head>
+<body>
+  <div class="main_container">
+    <div class="title_container">
+      <div class="title"><img src="./assets/LOGO.png" alt="LOGO"  height="80px"></div>
+      <span class="title_hint" >SUPER-3D</span>
+      <div class="title_hint">
+        <div  class="typing-indicator">
+          <div  class="typing-circle"></div>
+          <div  class="typing-circle"></div>
+          <div  class="typing-circle"></div>
+          <div  class="typing-shadow"></div>
+          <div  class="typing-shadow"></div>
+          <div  class="typing-shadow"></div>
+          </div>
+      </div>
+      <div class="title_hint" style="float: right;border: 1px solid black;">
+        Machine Setting
+      </div>
+    </div>
+    <div class="content_container">
+      <div class="tab">
+        <button class="tablinks" onclick="openCity(event, 'Print')" id="defaultOpen"><i class="fa fa-fw fa-home"></i>Print</button>
+        <button class="tablinks" onclick="openCity(event, 'Upload')" ><i class="fa fa-fw fa-search"></i>Upload</button>
+        <button class="tablinks" onclick="openCity(event, 'Remote')"><i class="fa fa-fw fa-envelope"></i>Remote</button>
+        <button class="tablinks" onclick="openCity(event, 'Ctrl')"><i class="fa fa-fw fa-user"></i>Ctrl</button>
+      </div>
+      <div id="Print" class="tabcontent">
+        <div id="camera_process" class="print_tab">
+        <div>Camera</div>
+        <br>
+        <img id="camera_show" src="./assets/Bulbasaur_0.jpg" alt="" height="70%">
+        <br>
+        <button id="camera_swtich" class="button_style">On</button>
+        <button id="camera_refresh" class="button_style">Refresh</button>
+        </div>
+        <div id="print_process"  class="print_tab">
+          <div>Printing</div>
+          <br>
+          <span>Filename</span>
+          <br>
+          <img src="./assets/Bulbasaur_0.jpg" alt="" height="40%">
+          <div class="loader"></div>
+          <br>
+          <div>
+            <div class="print_hint">Z-height:200mm</div><div class="print_hint">Print-Speed:100%</div>
+            <br>
+            <div class="print_hint">Time:24:24:24</div><div class="print_hint">Print-flowrate:100%</div>
+            <br>
+            <button>PAUSE</button>
+            <button>STOP</button>
+          </div>
+        </div>
+      </div>
+      <div id="Upload" class="tabcontent">
+        <label  class="custum-file-upload" for="file">
+          <div class="upload_icon">
+          <!-- <svg xmlns="http://www.w3.org/2000/svg" fill="" viewBox="0 0 24 24"><g stroke-width="0" id="SVGRepo_bgCarrier"></g><g stroke-linejoin="round" stroke-linecap="round" id="SVGRepo_tracerCarrier"></g><g id="SVGRepo_iconCarrier"> <path fill="" d="M10 1C9.73478 1 9.48043 1.10536 9.29289 1.29289L3.29289 7.29289C3.10536 7.48043 3 7.73478 3 8V20C3 21.6569 4.34315 23 6 23H7C7.55228 23 8 22.5523 8 22C8 21.4477 7.55228 21 7 21H6C5.44772 21 5 20.5523 5 20V9H10C10.5523 9 11 8.55228 11 8V3H18C18.5523 3 19 3.44772 19 4V9C19 9.55228 19.4477 10 20 10C20.5523 10 21 9.55228 21 9V4C21 2.34315 19.6569 1 18 1H10ZM9 7H6.41421L9 4.41421V7ZM14 15.5C14 14.1193 15.1193 13 16.5 13C17.8807 13 19 14.1193 19 15.5V16V17H20C21.1046 17 22 17.8954 22 19C22 20.1046 21.1046 21 20 21H13C11.8954 21 11 20.1046 11 19C11 17.8954 11.8954 17 13 17H14V16V15.5ZM16.5 11C14.142 11 12.2076 12.8136 12.0156 15.122C10.2825 15.5606 9 17.1305 9 19C9 21.2091 10.7909 23 13 23H20C22.2091 23 24 21.2091 24 19C24 17.1305 22.7175 15.5606 20.9844 15.122C20.7924 12.8136 18.858 11 16.5 11Z" clip-rule="evenodd" fill-rule="evenodd"></path> </g></svg> -->
+          </div>
+          <div class="upload_text">
+              <span>Click to upload file</span>
+              </div>
+              <input type="file" id="file">
+        </label>
+      </div>
+      <div id="Remote" class="tabcontent ">
+        <div id="file_list" class="content_box">
+          <div class="panel_title">File List</div>
+          <button id="file0" class="file_item">xxx.gcode</button>
+          <button id="file1" class="file_item">yyy.gcode</button>
+          <button id="file2" class="file_item">zzz.gcode</button>
+          <button id="file3" class="file_item">xxx.gcode</button>
+          <button id="file4" class="file_item">yyy.gcode</button>
+          <button id="file5" class="file_item">zzz.gcode</button>
+          <button id="file6" class="file_item">xxx.gcode</button>
+          <button id="file7" class="file_item">yyy.gcode</button>
+          <button id="file8" class="file_item">zzz.gcode</button>
+          <button id="file9" class="file_item">zzz.gcode</button>
+          <div>
+            <br>
+            <button id="go2print" class="button_style" align="center">Prev.</button>
+            <button id="download" class="button_style" align="center">Refresh</button>
+            <button id="delete" class="button_style" align="center">Next</button>
+          </div>
+          <!-- 上面的按钮点击之后，弹出以下的div -->
+          <div id="myModal" class="modal">
+            <!-- Modal content -->
+            <div class="modal-content">
+              <div class="modal-header">
+                <span class="close">&times;</span>
+                <h2>Preview of this Gcode</h2>
+              </div>
+              <div class="modal-body">
+                <img id="preview_img" src="./assets/Bulbasaur_0.jpg" alt="">
+                <p id="file_name">Some text in the Modal Body</p>
+                <button class="button_style">Print</button>
+                <button class="button_style">Download</button>
+                <button class="button_style">Delete</button>
+              </div>
+              <div class="modal-footer">
+                <h3>You can print, download, delete gcode from remote.</h3>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="Ctrl" class="tabcontent">
+        <div class="content_box">
+          <div  class="panel_title">Tempreture</div>
+          <br>
+          <div>
+            <div style="display: flex; justify-content: center; align-items: center;">
+              <img class="icon" src="./assets/ext_in_state.png">
+              <span>Head:</span><span>200</span><span>℃</span>
+            </div>              
+            <div class="input-container">
+              <input placeholder="Enter Target Tempreture" class="input-field" type="number">
+              <label for="input-field" class="input-label">Enter Target Tempreture</label>
+              <span class="input-highlight"></span>
+            </div>
+            <br>
+            <div style="display: flex; justify-content: center; align-items: center;">
+              <img class="icon" src="./assets/bed_in_state.png" >
+              <span>Bed:</span><span>60</span><span>℃</span>
+            </div>  
+            <div class="input-container">
+              <input placeholder="Enter Target Tempreture" class="input-field" type="number">
+              <label for="input-field" class="input-label">Enter Target Tempreture</label>
+              <span class="input-highlight"></span>
+            </div>
+          </div>
+            <div class="panel_title">Filament</div>
+            <br>
+            <button class="button_style"><img src="./assets/load.png" alt=""></button>
+            <button class="button_style"><img src="./assets/stop_load.png" alt=""></button>
+            <button class="button_style"><img src="./assets/unload.png" alt=""></button>
+        </div>
+        <div class="content_box">
+          <div class="panel_title">Movement</div>
+          <br>
+          <table id="movement_tb">
+            <tr>
+              <td><button class="button_style">X+</button></td>
+              <td><button class="button_style">Y+</button></td>
+              <td><button class="button_style">Z+</button></td>
+            </tr>
+            <tr>
+              <td><button class="button_style">X-</button></td> 
+              <td><button class="button_style">Y-</button></td> 
+              <td><button class="button_style">Z-</button></td>
+            </tr>
+            <tr>
+              <td><button class="button_style">HomeXY</button></td>
+              <td><button class="button_style">HomeZ</button></td>
+              <td><button class="button_style">HomeAll</button></td>
+            </tr>
+          </table>
+          <br>
+          <div class="radio-inputs" align="center" style="width: 100%; display:flex;justify-content: center; align-items:center;">
+            <label class="radio">
+              <input type="radio" name="radio" checked="">
+              <span class="name">1mm</span>
+            </label>
+            <label class="radio">
+              <input type="radio" name="radio">
+              <span class="name">10mm</span>
+            </label>                      
+            <label class="radio">
+              <input type="radio" name="radio">
+              <span class="name">50mm</span>
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="switch_panel">
+      <div id="state_panel" class="title">
+        <div>
+          Head:23℃/200℃
+        </div>
+        <div>
+          Bed:23℃/60℃
+        </div>
+        <div>
+          X:100mm Y:150mm Z:50mm
+        </div>
+      </div>
+      <button class="switch_style">L-Light</button>
+      <button class="switch_style">R-Light</button>
+      <button class="switch_style">Main-Light</button>
+      <button class="switch_style">Filament Detect</button>
+      <button class="switch_style">Buzzer</button>
+    </div>
+  </div>
+    
+</body>
+
+<script src="./renderer.js"></script>
+
+</html>
