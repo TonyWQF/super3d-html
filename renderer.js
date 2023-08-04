@@ -15,9 +15,10 @@ function openCity(evt, cityName) {
   evt.currentTarget.className += " active";
 }
 
+
+// on tab-button(print, upload, ctrl) clicked
 // Get the element with id="defaultOpen" and click on it
 document.getElementById("defaultOpen").click();
-
 
 // Get the modal
 var modal = document.getElementById("myModal");
@@ -47,4 +48,4 @@ window.onclick = function(event) {
   }
 }
 
-
+const file_list_page_index = 0
