@@ -1,4 +1,4 @@
-alert('x:' +screen.width + ' y:' + screen.height);
+// alert('x:' +screen.width + ' y:' + screen.height);
 
 // for menu style
 function openCity(evt, cityName) {
@@ -48,6 +48,11 @@ window.onclick = function(event) {
   }
 }
 
+
+// menubtn
+function menu_toggle(x) {
+  x.classList.toggle("change");
+}
 
 var url_get_status = "api/g_status";
 function send_get(url) {

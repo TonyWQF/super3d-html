@@ -36,25 +36,9 @@ padding: 1%;
 .content_container{
   padding-right: 1%;
   position: relative;
-  /* margin-top: 3%; */
   border: 1px solid #ccc;
   height: 70%;
-  /* display: grid;
-  grid-template-columns: 1fr 2fr; */
 }
-
-/* @media screen and (min-width:600px) {
-  .title_container{
-    position: relative;
-    width: 100%;
-     z-index: 5;  
-     background-color: #fefefe;
-    }
-  .content_container{
-    position: relative;
-    border: 1px solid #ccc;
-  }
-} */
 
 
 
@@ -161,6 +145,29 @@ padding: 1%;
   animation-delay: 0.3s;
 }
 
+/* menu toggle style */
+.menu_btn {
+  display:contents;
+  cursor: pointer;
+}
+
+.bar1, .bar2, .bar3 {
+  width: 35px;
+  height: 5px;
+  background-color: #333;
+  margin: 6px 0;
+  transition: 0.4s;
+}
+
+.change .bar1 {
+  transform: translate(0, 11px) rotate(-45deg);
+}
+
+.change .bar2 {opacity: 0;}
+
+.change .bar3 {
+  transform: translate(0, -11px) rotate(45deg);
+}
 
 
 
@@ -666,4 +673,137 @@ text-align: center;
   height: 100%;
   border: 1px solid red;
 }
+
+
+@media screen and (max-width:600px) {
+  .content_container{
+    position:relative;
+    border: none;
+    width: 100%;
+    float:left;
+  }
+  .tab {
+    position: absolute;
+    float: left;
+    border: 1px solid #ccc;
+    background-color: #f1f1f1;
+    width: 100%;
+    height: 80px;
+  }
+  .tab button {
+    float: left;
+    display: block;
+    background-color: inherit;
+    color: black;
+    padding: 22px 16px;
+    width: 25%;
+    height: 100%;
+    border: none;
+    outline: none;
+    text-align: center;
+    cursor: pointer;
+    transition: 0.3s;
+    font-size: 20px;
+  }
+  .tabcontent {
+    position: absolute;
+    top: 80px;
+    right: 0%;
+    float: left;
+    padding: 0px 12px;
+    width: 100%;
+    height: 100%;
+    border-left: none;
+    font-size: 20px;
+  }
+  .print_tab{
+    font-size: large;
+  }
+  #printing_filename{
+    font-size: 16px;
+    height: 5%;
+  }
+  .print_hint{
+    font-size: 16px;
+    height: 40px;
+    width: 50%;
+  }
+
+  #camera_process{
+    margin: 1%;
+    width: 98%;
+    height: 50%;
+    box-shadow: 0 8px 50px #23232333;
+    
+  }
+  #camera_show{
+    height: 64%;
+  }
+  #print_process{
+    margin: 1%;
+    width: 98%;
+    height: 50%;
+    box-shadow: 0 8px 50px #23232333;
+  }
+  .print_info{
+    float: left;
+    width: 100%;
+    height: 40%;
+    font-size: small;
+    font-weight: lighter;
+    position: relative;
+    text-align: center;
+    
+  }
+  .print_btn{
+    height: 35px;
+    width: 80px;
+  }
+  #preview_show{
+    height:40%
+  }
+  #file_list{
+    width: 100%;
+  }
+  #file_list>button {
+    width: 100%;
+    height: 35px;
+    color: green;
+    margin-bottom: 10px;
+    border:none;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  #file_list>button:hover {
+    transform: translateY(-2px);
+    border: 2px solid #ccc;
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+  }
+  
+  #file_list>button:active {
+    transform: translateY(1px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+
+  #switch_panel{
+    margin-top: 0.5%;
+    background-color: white;
+    height: 14%;
+    text-align: center;
+    border: none;
+  }
+  .switch_style{
+    width: 10%;
+    height: 85%;
+    margin: 0.5%;
+    border: none;
+    box-shadow: 0 8px 25px #23232333;
+  }
+  #content_box{
+    float: left;
+    width: 100%;
+    height: 50%;
+  }
+}
+
 
