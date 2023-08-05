@@ -71,7 +71,7 @@
           <div class="upload_text">
               <span>Click to upload file</span>
               </div>
-              <input type="file" id="file">
+              <input type="file" id="file" onchange="file_upload()">
         </label>
       </div>
       <div id="Remote" class="tabcontent ">
@@ -89,12 +89,12 @@
           <button id="file8" class="file_item">zzz.gcode</button>
           <button id="file9" class="file_item">zzz.gcode</button>
           <div>
-            <button id="go2print" class="button_style" align="center">Prev.</button>
-            <button id="download" class="button_style" align="center">Refresh</button>
-            <button id="delete" class="button_style" align="center">Next</button>
+            <button id="go2print" class="button_style" align="center" onclick="file_prev_page()">Prev.</button>
+            <button id="download" class="button_style" align="center" onclick="file_first_page()">Refresh</button>
+            <button id="delete" class="button_style" align="center" onclick="file_next_page()">Next</button>
           </div> 
           <!-- 上面的按钮点击之后，弹出以下的div -->
-           <div id="myModal" class="modal">
+          <div id="myModal" class="modal" style="visibility: hidden;">
             <!-- Modal content -->
             <div class="modal-content">
               <div class="modal-header">
@@ -102,7 +102,7 @@
                 <h2>Preview of this Gcode</h2>
               </div>
               <div class="modal-body">
-                <img id="preview_img" src="./assets/Bulbasaur_0.jpg" alt="">
+                <img id="preview_img" src="./assets/Bulbasaur_0.jpg" alt="" style="visibility: hidden;">
                 <p id="file_name">Some text in the Modal Body</p>
                 <button class="button_style">Print</button>
                 <button class="button_style">Download</button>
@@ -125,7 +125,7 @@
               <span>Head:</span><span>200</span><span>℃</span>
             </div>              
             <div class="input-container">
-              <input placeholder="Enter Target Tempreture" class="input-field" type="number">
+              <input placeholder="Enter Target Tempreture" class="input-field" type="number" onkeyup="set_nozzle_temp(event)" id="targetTemp0">
               <label for="input-field" class="input-label">Enter Target Tempreture</label>
               <span class="input-highlight"></span>
             </div>
@@ -146,19 +146,19 @@
             <button class="button_style"><img src="./assets/stop_load.png" alt=""></button>
             <button class="button_style"><img src="./assets/unload.png" alt=""></button>
         </div>
-        <div class="content_box">
+        <<div class="content_box">
           <div class="panel_title">Movement</div>
           <br>
           <table id="movement_tb">
             <tr>
-              <td><button class="button_style">X+</button></td>
-              <td><button class="button_style">Y+</button></td>
-              <td><button class="button_style">Z+</button></td>
+              <td><button class="button_style" onclick="move_left()">X+</button></td>
+              <td><button class="button_style" onclick="move_back()">Y+</button></td>
+              <td><button class="button_style" onclick="move_up()">Z+</button></td>
             </tr>
             <tr>
-              <td><button class="button_style">X-</button></td> 
-              <td><button class="button_style">Y-</button></td> 
-              <td><button class="button_style">Z-</button></td>
+              <td><button class="button_style" onclick="move_right()">X-</button></td> 
+              <td><button class="button_style" onclick="move_front()">Y-</button></td> 
+              <td><button class="button_style" onclick="move_down()">Z-</button></td>
             </tr>
             <tr>
               <td><button class="button_style">HomeXY</button></td>
@@ -169,15 +169,15 @@
           <br>
           <div class="radio-inputs" align="center" style="width: 100%; display:flex;justify-content: center; align-items:center;">
             <label class="radio">
-              <input type="radio" name="radio" checked="">
+              <input type="radio" name="radio" id="radio_1mm" checked="">
               <span class="name">1mm</span>
             </label>
             <label class="radio">
-              <input type="radio" name="radio">
+              <input type="radio" name="radio" id="radio_10mm">
               <span class="name">10mm</span>
             </label>                      
             <label class="radio">
-              <input type="radio" name="radio">
+              <input type="radio" name="radio" id="radio_50mm">
               <span class="name">50mm</span>
             </label>
           </div>
@@ -206,6 +206,8 @@
     
 </body>
 
-<script src="./renderer.js"></script>
+<script src="./script.js"></script>
+<script src="./files.js"></script>
+<script src="./ctrl.js"></script>
 
 </html>

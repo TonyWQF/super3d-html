@@ -1,4 +1,4 @@
-
+alert('x:' +screen.width + ' y:' + screen.height);
 
 // for menu style
 function openCity(evt, cityName) {
@@ -48,4 +48,35 @@ window.onclick = function(event) {
   }
 }
 
-const file_list_page_index = 0
+
+var url_get_status = "api/g_status";
+function send_get(url) {
+  var xhr = new XMLHttpRequest();
+  xhr.open("GET", url, false);
+  xhr.onreadystatechange = function() {
+    if(xhr.readyState == 4) {
+      if(xhr.status == 200) {
+        
+      }
+      else {
+        console.log(xhr.status)
+      }
+    }
+  }
+  xhr.send();
+}
+
+function request_status() {
+  send_get(url_get_status);
+}
+
+var bed_temp=25;
+
+// var timerId = setInterval(() => {
+//   bed_temp = bed_temp + 1;
+//   document.getElementById("bed_temp").innerHTML = bed_temp;
+// }, 1000);
+
+function body_init() {
+  location.reload(true);
+}
