@@ -12,9 +12,12 @@ from simple_http_server import Cookies
 from simple_http_server import Cookie
 from simple_http_server import Redirect
 from simple_http_server import ModelDict
+import simple_http_server.logger as logger
 import base64
 from io import BytesIO
 import os
+import sys
+
 
 gcode_file_path = ""
 route_path = ""
@@ -50,36 +53,46 @@ def main_load_script():
   return content
 
 @controller
+@route("/status")
+class status_manager:
+  def __init__(self):
+    self.name="status manager"
+
+  @request_map("/machine")
+  def get_machine_status(self):
+    return 200, machine.status.to_string_array()
+
+@controller
 @route("/ctrl")
 class control_manage:
-  def __init__(self)->None:
+  def __init__(self):
     self.name="control manager"
 
   @request_map("/move", method=("POST"))
-  def move_axis(axis=Parameter('axis'), distance=Parameter('distance')):
+  def move_axis(self, axis=Parameter('axis'), distance=Parameter('distance')):
     print(axis)
     print(distance)
     return 200
   
   @request_map('/heat')
-  def heat_up(target=Parameter('target'), temp=Parameter('temp')):
+  def heat_up(self, target=Parameter('target'), temp=Parameter('temp')):
     print(target)
     print(temp)
-    pass
+    machine.heatup(target, temp)
 
 @controller
 @route("/files")
 class file_manager:
-  def __init__(self)->None:
+  def __init__(self):
     self.name="file manager"
 
   @request_map("/upload", method=("GET","POST"))
-  def upload(file=MultipartFile("file")):
+  def upload(self, file=MultipartFile("file")):
     file.save_to_file(gcode_file_path + file.filename)
     return 200
   
   @request_map("/list", method=("GET"))
-  def listitem(pageindex=Parameter('page'),page_per_count=Parameter('page_per_count')):
+  def listitem(self, pageindex=Parameter('page'),page_per_count=Parameter('page_per_count')):
     pageindex = int(pageindex)
     page_per_count = int(page_per_count)
 
@@ -106,21 +119,30 @@ class file_manager:
     return 200, '[' + str(pageindex) + ']' + '//'.join(files[start_index:end_index])
   
   @request_map("/delete", method=("POST"))
-  def delete(file_name=Parameter("file_name")):
+  def delete_file(self, file_name=Parameter("file_name")):
     pass
   
   @request_map("/print", method=("POST"))
-  def print(file_name=Parameter("file_name")):
+  def print_file(self, file_name=Parameter("file_name")):
     pass
 
 
 if __name__ == '__main__':
+    sys.path.append('./TcpProcessor')
     if(os.name == 'nt'):
       gcode_file_path = './local/test/'
       route_path = '/'
     else:
       gcode_file_path = '/home/wqf/gcode/'
       route_path = '/api'
+      sys.path.append('/home/wqf/html/TcpProcessor')
+      
+    logger.set_level("ERROR")
+    print(sys.path)
+
+    from TcpProcessor.ProtocalV30 import TcpTransmiter, MachineControler
+
+    machine = MachineControler()
 
     print('Gcode path:' + gcode_file_path)
     print('Router path' + route_path)

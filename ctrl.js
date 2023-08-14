@@ -48,12 +48,18 @@ function move_down() {
   move_axis('Z', -distance);
 }
 
-function heat_nozzle() {
-
-}
-
-function heat_bed() {
-
+function set_bed_temp(event) {
+  if(event.keyCode == 13) {
+    var xhr = new XMLHttpRequest();
+    var form_data = new FormData();
+    xhr.open("POST", "api/ctrl/heat");
+    form_data.append("target", "2");
+    form_data.append("temp", document.getElementById('targetBedTemp').value);
+    xhr.onload = function() {
+      console.log("heat success");
+    }
+    xhr.send(form_data);
+  }
 }
 
 function set_nozzle_temp(event) {

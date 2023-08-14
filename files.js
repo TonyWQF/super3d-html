@@ -7,9 +7,10 @@ function file_list() {
     if(xhr.status == 200) {
       console.log("Upload succes");
       var response_text = xhr.responseText;
-      window.file_list_page_index = response_text.slice(1, response_text.indexOf(']'));
+      file_first_page = response_text.slice(1, response_text.indexOf(']'));
       file_names = response_text.slice(response_text.indexOf(']') + 1).split('//');
-      console.log(window.file_list_page_index)
+
+      console.log(file_list_page_index)
       console.log(file_names)
 
       // Clear item
@@ -31,18 +32,18 @@ function file_list() {
 }
 
 function file_first_page() {
-  window.file_list_page_index = 0;
+  file_list_page_index = 0;
   file_list();
 }
 
 function file_next_page() {
-  window.file_list_page_index++;
+  file_list_page_index++;
   file_list();
 }
 
 function file_prev_page() {
-  if(window.file_list_page_index > 0) {
-    window.file_list_page_index--;
+  if(file_list_page_index > 0) {
+    file_list_page_index--;
     file_list();
   }
 }
