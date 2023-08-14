@@ -43,22 +43,21 @@
       <div id="Print" class="tabcontent">
         <div id="camera_process" class="print_tab">
         <div class="panel_title">Camera</div>
-        <br>
-        <img id="camera_show" src="./assets/Bulbasaur_0.jpg" alt="" height="70%">
+        <img id="camera_show" src="./assets/Bulbasaur_0.jpg" alt="">
         <br>
         <button id="camera_swtich" class="button_style">On</button>
         <button id="camera_refresh" class="button_style">Refresh</button>
         </div>
         <div id="print_process"  class="print_tab">
-          <div class="panel_title" style="height: 5%;">Printing</div>
-          <span id="printing_filename">Filename</span>
+          <!-- <div class="panel_title" style="height: 5%;">Printing</div> -->
+          <span id="printing_filename" style="margin-top: 2%;">Filename</span>
           <br>
-          <img id="preview_show" src="./assets/Bulbasaur_0.jpg" alt="" height="40%">
+          <img id="preview_show" src="./assets/Bulbasaur_0.jpg" alt="">
           <div class="loader"></div>
           <div class="print_info">
-            <div class="print_hint">Z-height:200mm</div><div class="print_hint">Print-Speed:100%</div>
+            <div class="print_hint">Z_height:200mm</div><div class="print_hint">Print_Speed:100%</div>
+            <div class="print_hint">Time:24:24:24</div><div class="print_hint">Print_flowrate:100%</div>
             <br>
-            <div class="print_hint">Time:24:24:24</div><div class="print_hint">Print-flowrate:100%</div>
             <button class="print_btn">PAUSE</button>
             <button  class="print_btn">STOP</button>
           </div>
@@ -99,7 +98,7 @@
             <div class="modal-content">
               <div class="modal-header">
                 <span class="close">&times;</span>
-                <h2>Preview of this Gcode</h2>
+                <h3>Preview</h3>
               </div>
               <div class="modal-body">
                 <img id="preview_img" src="./assets/Bulbasaur_0.jpg" alt="">
@@ -109,24 +108,23 @@
                 <button class="button_style">Delete</button>
               </div>
               <div class="modal-footer">
-                <h3>You can print, download, delete gcode from remote.</h3>
+                <h5>You can print, download, delete gcode from remote.</h5>
               </div>
             </div>
           </div>
         </div>
       </div>
       <div id="Ctrl" class="tabcontent">
-        <div class="content_box">
+        <div class="content_box temp_tb">
           <div  class="panel_title">Tempreture</div>
-          <br>
-          <div class="temp_tb">
+          <div>
             <div style="display: flex; justify-content: center; align-items: center;">
               <img class="icon" src="./assets/ext_in_state.png">
               <span>Head:</span><span>200</span><span>℃</span>
             </div>              
             <div class="input-container">
               <input placeholder="Enter Target Tempreture" class="input-field" type="number" onkeyup="set_nozzle_temp(event)" id="targetTemp0">
-              <label for="input-field" class="input-label">Enter Target Tempreture</label>
+              <label for="input-field" class="input-label">Enter Tar-Temp.</label>
               <span class="input-highlight"></span>
             </div>
             <br>
@@ -136,38 +134,39 @@
             </div>  
             <div class="input-container">
               <input placeholder="Enter Target Tempreture" class="input-field" type="number">
-              <label for="input-field" class="input-label">Enter Target Tempreture</label>
+              <label for="input-field" class="input-label">Enter Tar-Temp.</label>
               <span class="input-highlight"></span>
             </div>
+            <div class="filament_tb">
+              <!-- <div class="panel_title">Filament</div> -->
+              <button class="button_style"><img src="./assets/load.png" alt=""></button>
+              <button class="button_style"><img src="./assets/stop_load.png" alt=""></button>
+              <button class="button_style"><img src="./assets/unload.png" alt=""></button>
+            </div>
           </div>
-          <div class="filament_tb">
-            <div class="panel_title">Filament</div>
-            <button class="button_style"><img src="./assets/load.png" alt=""></button>
-            <button class="button_style"><img src="./assets/stop_load.png" alt=""></button>
-            <button class="button_style"><img src="./assets/unload.png" alt=""></button>
-          </div>
+
         </div>
-        <div class="content_box">
+        <div class="content_box" id="movement_tb">
           <div class="panel_title">Movement</div>
-          <br>
-          <table id="movement_tb">
-            <tr>
-              <td><button class="button_style" onclick="move_left()">X+</button></td>
-              <td><button class="button_style" onclick="move_back()">Y+</button></td>
-              <td><button class="button_style" onclick="move_up()">Z+</button></td>
-            </tr>
-            <tr>
-              <td><button class="button_style" onclick="move_right()">X-</button></td> 
-              <td><button class="button_style" onclick="move_front()">Y-</button></td> 
-              <td><button class="button_style" onclick="move_down()">Z-</button></td>
-            </tr>
-            <tr>
-              <td><button class="button_style">HomeXY</button></td>
-              <td><button class="button_style">HomeZ</button></td>
-              <td><button class="button_style">HomeAll</button></td>
-            </tr>
-          </table>
-          <br>
+          <div> 
+            <table style="width: 100%;height: 100%;">
+              <tr>
+                <td><button class="button_style" onclick="move_left()">X+</button></td>
+                <td><button class="button_style" onclick="move_back()">Y+</button></td>
+                <td><button class="button_style" onclick="move_up()">Z+</button></td>
+              </tr>
+              <tr>
+                <td><button class="button_style" onclick="move_right()">X-</button></td> 
+                <td><button class="button_style" onclick="move_front()">Y-</button></td> 
+                <td><button class="button_style" onclick="move_down()">Z-</button></td>
+              </tr>
+              <tr>
+                <td><button class="button_style">HomeXY</button></td>
+                <td><button class="button_style">HomeZ</button></td>
+                <td><button class="button_style">HomeAll</button></td>
+              </tr>
+            </table>
+          </div>
           <div class="radio-inputs" align="center" style="width: 100%; display:flex;justify-content: center; align-items:center;">
             <label class="radio">
               <input type="radio" name="radio" id="radio_1mm" checked="">
