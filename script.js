@@ -24,16 +24,35 @@ document.getElementById("defaultOpen").click();
 var modal = document.getElementById("myModal");
 
 // Get the button that opens the modal
-var file_btns = document.getElementsByClassName("file_item")
+var file_btns = document.getElementsByClassName("file_item");
+var file_name = document.getElementById("file_name");
+var priniting_file_name = document.getElementById("printing_filename");
+
 
 // Get the <span> element that closes the modal
 var span = document.getElementsByClassName("close")[0];
 
 // When the user clicks the button, open the modal 
-for (i = 0; i < file_btns.length; i++) {
-  file_btns[i].onclick = function() {
-    modal.style.display = "block";
+for (let j = 0; j < file_btns.length; j++) {
+
+  file_btns[j].onclick = function() {
+    var filename = file_btns.item(j).innerHTML;
+    if(filename!=""){
+      modal.style.display = "block";
+      // change text of span
+      file_name.innerHTML = filename;
+      priniting_file_name.innerHTML = filename;
+  
+      //get info of this file and wait for it
+  
+    }
   }
+}
+
+var goPrint = document.getElementById("go2print")
+goPrint.onclick = function(){
+  modal.style.display = "none";
+  document.getElementById("defaultOpen").click();
 }
 
 // When the user clicks on <span> (x), close the modal
@@ -48,6 +67,14 @@ window.onclick = function(event) {
   }
 }
 
+var pause_resume_btn = document.getElementById("btn_pause_resume");
+pause_resume_btn.onclick = function(){
+  if (pause_resume_btn.innerHTML=="Pause") {
+    pause_resume_btn.innerHTML="Resume";
+  }else{
+    pause_resume_btn.innerHTML="Pause";
+  }
+}
 
 // menubtn
 function menu_toggle(x) {

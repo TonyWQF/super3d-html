@@ -59,6 +59,10 @@ function set_bed_temp(event) {
       console.log("heat success");
     }
     xhr.send(form_data);
+
+
+    var tar_bed = document.getElementById("tar_bed");
+    tar_bed.innerHTML = document.getElementById('targetBedTemp').value;
   }
 }
 
@@ -73,5 +77,8 @@ function set_nozzle_temp(event) {
       console.log("heat success");
     }
     xhr.send(form_data);
+
+    var tar_head = document.getElementById("tar_head");
+    tar_head.innerHTML = document.getElementById('targetTemp0').value;
   }
 }
